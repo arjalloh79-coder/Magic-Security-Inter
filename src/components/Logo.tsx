@@ -1,16 +1,34 @@
+import { useState } from 'react'
+
 interface LogoProps {
   className?: string
   title?: string
 }
 
+const LOGO_SRC = '/images/logo-msi.jpg'
+
 /**
- * Inline recreation of the MSI eagle badge (black ring / red eagle accents /
- * white eagle body + wordmark) so it renders crisply at any size without an
- * external asset. Drop the client's exact logo file at
- * /public/images/logo-msi.png and swap this component for an <img> tag if a
- * pixel-perfect match to the original artwork is required.
+ * Renders the client's real MSI badge once the file has loaded; if it's
+ * ever missing or fails to load, falls back to an inline SVG recreation
+ * (black ring / red eagle accents / white eagle body + wordmark) so a
+ * logo always renders crisply, never a broken-image glyph.
  */
 export function Logo({ className = 'h-12 w-12', title = 'MAGIC SECURITY INTER' }: LogoProps) {
+  const [failed, setFailed] = useState(false)
+
+  if (!failed) {
+    return (
+      <img
+        src={LOGO_SRC}
+        alt={title}
+        width={200}
+        height={200}
+        onError={() => setFailed(true)}
+        className={`${className} rounded-full object-cover`}
+      />
+    )
+  }
+
   return (
     <svg viewBox="0 0 200 200" className={className} role="img" aria-label={title}>
       <circle cx="100" cy="100" r="98" fill="#0a0a0a" stroke="#fff" strokeWidth="2" />

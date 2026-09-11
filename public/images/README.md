@@ -1,17 +1,14 @@
-# Image placeholders
+# Images
 
-This build could not receive the actual photo/logo files shared in the request (the remote build
-environment does not have access to images pasted into chat), so the site currently renders elegant
-placeholder panels wherever a photo belongs. Add real files with these **exact names** to this folder
-and they will appear automatically — no code changes needed.
+Real client assets are now in place:
 
-| File to add | Used for |
+| File | Used for |
 |---|---|
-| `hero-agents.jpg` | Hero section full-width background |
-| `agents-mission.jpg` | "Des agents prêts à protéger..." section, large photo |
-| `agents-vehicle.jpg` | Same section, small photo (e.g. the MSI patrol vehicle) |
-| `agents-team.jpg` | Same section, small photo (team / uniforms group shot) |
-| `og-cover.jpg` | Social share preview image (1200×630px recommended) |
-| `logo-msi.png` | Optional: replace the built-in SVG badge with the client's exact logo file (also update `<link rel="icon">` in `index.html` and swap `<Logo />` for an `<img>` in `Navbar.tsx` / `Footer.tsx`) |
+| `logo-msi.jpg` | Official MSI badge — navbar, footer, browser favicon |
+| `hero-agents.jpg` | Hero section full-width background (also the social share / Open Graph image) |
+| `agents-mission.jpg` | "Des agents prêts à protéger..." section, large photo (agents on field duty) |
+| `agents-vehicle.jpg` | Same section, small photo — the MSI-branded patrol vehicle |
+| `agents-team.jpg` | Same section, small photo — full team lineup in uniform |
+| `event-crowd.jpg` | Not currently used on the page; kept here in case a future section (e.g. an event-security gallery) needs it |
 
-Recommended sizes: hero image ≥ 1920×1080px, section photos ≥ 1200×900px, all as optimized `.jpg` or `.webp` (under ~300KB each) for fast loading.
+Every image component (`Logo`, `PhotoSlot`) automatically falls back to an elegant placeholder/recreation if a file here is ever renamed or removed — so replacing any of these later is as simple as overwriting the file with the same name, no code changes required.
