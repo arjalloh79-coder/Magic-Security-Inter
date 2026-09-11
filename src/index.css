@@ -11,7 +11,7 @@ body {
 }
 
 ::selection {
-  background: rgba(212, 175, 55, 0.35);
+  background: rgba(200, 16, 46, 0.45);
   color: #fff;
 }
 
@@ -26,7 +26,7 @@ body {
   border-radius: 999px;
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: #d4af37;
+  background: #c8102e;
 }
 
 .reveal {
@@ -40,7 +40,7 @@ body {
 }
 
 .text-shimmer {
-  background: linear-gradient(90deg, #e8c876 0%, #fff6df 25%, #d4af37 50%, #fff6df 75%, #e8c876 100%);
+  background: linear-gradient(90deg, #c8102e 0%, #ffffff 25%, #e0374a 50%, #ffffff 75%, #c8102e 100%);
   background-size: 200% auto;
   -webkit-background-clip: text;
   background-clip: text;
@@ -49,15 +49,15 @@ body {
 }
 
 .section-eyebrow {
-  @apply inline-flex items-center gap-2 text-xs sm:text-sm font-semibold uppercase tracking-[0.25em] text-gold-500;
+  @apply inline-flex items-center gap-2 text-xs sm:text-sm font-semibold uppercase tracking-[0.25em] text-accent-500;
 }
 
 .btn-primary {
-  @apply inline-flex items-center justify-center gap-2 rounded-sm bg-gold-500 px-6 py-3.5 text-sm sm:text-base font-semibold uppercase tracking-wider text-ink-950 transition-all duration-300 hover:bg-gold-400 hover:shadow-gold active:scale-[0.98];
+  @apply inline-flex items-center justify-center gap-2 rounded-sm bg-accent-500 px-6 py-3.5 text-sm sm:text-base font-semibold uppercase tracking-wider text-white transition-all duration-300 hover:bg-accent-400 hover:shadow-accent active:scale-[0.98];
 }
 
 .btn-secondary {
-  @apply inline-flex items-center justify-center gap-2 rounded-sm border border-white/25 bg-white/[0.03] px-6 py-3.5 text-sm sm:text-base font-semibold uppercase tracking-wider text-white backdrop-blur-sm transition-all duration-300 hover:border-gold-500/60 hover:bg-white/[0.08] active:scale-[0.98];
+  @apply inline-flex items-center justify-center gap-2 rounded-sm border border-white/25 bg-white/[0.03] px-6 py-3.5 text-sm sm:text-base font-semibold uppercase tracking-wider text-white backdrop-blur-sm transition-all duration-300 hover:border-accent-500/60 hover:bg-white/[0.08] active:scale-[0.98];
 }
 
 .card-surface {
@@ -65,7 +65,7 @@ body {
 }
 
 .grid-overlay {
-  background-image: linear-gradient(rgba(212, 175, 55, 0.08) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(212, 175, 55, 0.08) 1px, transparent 1px);
+  background-image: linear-gradient(rgba(200, 16, 46, 0.08) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(200, 16, 46, 0.08) 1px, transparent 1px);
   background-size: 44px 44px;
 }

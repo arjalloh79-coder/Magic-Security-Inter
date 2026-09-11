@@ -1,8 +1,8 @@
-import { Shirt, HardHat, Footprints, Swords, Flashlight, Radio } from 'lucide-react'
 import { useLanguage } from '../i18n/LanguageContext'
 import { useReveal } from '../hooks/useReveal'
+import { UniformIcon, CapIcon, BootIcon, BatonIcon, TorchIcon, WalkieTalkieIcon } from './icons/EquipmentIcons'
 
-const icons = [Shirt, HardHat, Footprints, Swords, Flashlight, Radio]
+const icons = [UniformIcon, CapIcon, BootIcon, BatonIcon, TorchIcon, WalkieTalkieIcon]
 
 export function EquipmentSection() {
   const { t } = useLanguage()
@@ -25,10 +25,10 @@ export function EquipmentSection() {
             return (
               <div
                 key={item.title}
-                className="reveal group card-surface flex flex-col items-center gap-4 p-6 text-center transition-all duration-500 hover:-translate-y-1 hover:border-gold-500/50 sm:p-8"
+                className="reveal group card-surface flex flex-col items-center gap-4 p-6 text-center transition-all duration-500 hover:-translate-y-1 hover:border-accent-500/50 sm:p-8"
                 style={{ transitionDelay: `${i * 60}ms` }}
               >
-                <div className="flex h-14 w-14 items-center justify-center rounded-full border border-gold-500/25 bg-gradient-to-b from-gold-500/15 to-transparent text-gold-500 transition-transform duration-500 group-hover:scale-110">
+                <div className="flex h-14 w-14 items-center justify-center rounded-full border border-accent-500/25 bg-gradient-to-b from-accent-500/15 to-transparent text-accent-500 transition-transform duration-500 group-hover:scale-110">
                   <Icon className="h-6 w-6" strokeWidth={1.5} />
                 </div>
                 <h3 className="font-display text-base font-semibold uppercase tracking-wide text-white sm:text-lg">

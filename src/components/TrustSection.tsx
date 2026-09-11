@@ -25,11 +25,11 @@ export function TrustSection() {
             return (
               <div
                 key={card.title}
-                className="reveal card-surface group relative overflow-hidden p-7 transition-all duration-500 hover:-translate-y-1.5 hover:border-gold-500/50 hover:shadow-gold"
+                className="reveal card-surface group relative overflow-hidden p-7 transition-all duration-500 hover:-translate-y-1.5 hover:border-accent-500/50 hover:shadow-accent"
                 style={{ transitionDelay: `${i * 80}ms` }}
               >
-                <div className="absolute right-0 top-0 h-24 w-24 -translate-y-8 translate-x-8 rounded-full bg-gold-500/10 blur-2xl transition-all duration-500 group-hover:bg-gold-500/20" />
-                <div className="relative flex h-12 w-12 items-center justify-center rounded-sm border border-gold-500/30 bg-gold-500/10 text-gold-500 transition-colors duration-300 group-hover:bg-gold-500 group-hover:text-ink-950">
+                <div className="absolute right-0 top-0 h-24 w-24 -translate-y-8 translate-x-8 rounded-full bg-accent-500/10 blur-2xl transition-all duration-500 group-hover:bg-accent-500/20" />
+                <div className="relative flex h-12 w-12 items-center justify-center rounded-sm border border-accent-500/30 bg-accent-500/10 text-accent-500 transition-colors duration-300 group-hover:bg-accent-500 group-hover:text-white">
                   <Icon className="h-5.5 w-5.5" strokeWidth={1.75} />
                 </div>
                 <h3 className="relative mt-5 font-display text-lg font-semibold uppercase tracking-wide text-white">

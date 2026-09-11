@@ -20,7 +20,7 @@ export function ServicesSection() {
             </h2>
             <p className="mt-5 text-base leading-relaxed text-white/65 sm:text-lg">{t.services.subtitle}</p>
           </div>
-          <a href="#devis" className="hidden shrink-0 items-center gap-2 text-sm font-semibold uppercase tracking-wider text-gold-500 hover:text-gold-400 sm:inline-flex">
+          <a href="#devis" className="hidden shrink-0 items-center gap-2 text-sm font-semibold uppercase tracking-wider text-accent-500 hover:text-accent-400 sm:inline-flex">
             {t.services.cta}
             <ArrowUpRight className="h-4 w-4" />
           </a>
@@ -32,13 +32,13 @@ export function ServicesSection() {
             return (
               <div
                 key={item.title}
-                className="reveal group relative flex flex-col justify-between overflow-hidden border border-white/10 bg-gradient-to-b from-white/[0.04] to-transparent p-7 transition-all duration-500 hover:border-gold-500/50"
+                className="reveal group relative flex flex-col justify-between overflow-hidden border border-white/10 bg-gradient-to-b from-white/[0.04] to-transparent p-7 transition-all duration-500 hover:border-accent-500/50"
                 style={{ transitionDelay: `${i * 60}ms` }}
               >
                 <div>
                   <div className="flex items-start justify-between">
-                    <Icon className="h-8 w-8 text-gold-500" strokeWidth={1.5} />
-                    <span className="font-display text-3xl font-bold text-white/10 transition-colors duration-500 group-hover:text-gold-500/20">
+                    <Icon className="h-8 w-8 text-accent-500" strokeWidth={1.5} />
+                    <span className="font-display text-3xl font-bold text-white/10 transition-colors duration-500 group-hover:text-accent-500/20">
                       {String(i + 1).padStart(2, '0')}
                     </span>
                   </div>
@@ -47,7 +47,7 @@ export function ServicesSection() {
                   </h3>
                   <p className="mt-3 text-sm leading-relaxed text-white/60">{item.text}</p>
                 </div>
-                <span className="mt-6 h-px w-0 bg-gold-500 transition-all duration-500 group-hover:w-full" />
+                <span className="mt-6 h-px w-0 bg-accent-500 transition-all duration-500 group-hover:w-full" />
               </div>
             )
           })}
@@ -55,7 +55,7 @@ export function ServicesSection() {
 
         <a
           href="#devis"
-          className="reveal mt-10 flex items-center justify-center gap-2 text-sm font-semibold uppercase tracking-wider text-gold-500 hover:text-gold-400 sm:hidden"
+          className="reveal mt-10 flex items-center justify-center gap-2 text-sm font-semibold uppercase tracking-wider text-accent-500 hover:text-accent-400 sm:hidden"
         >
           {t.services.cta}
           <ArrowUpRight className="h-4 w-4" />

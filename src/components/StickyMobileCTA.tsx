@@ -16,7 +16,7 @@ export function StickyMobileCTA() {
 
   return (
     <div
-      className={`fixed inset-x-0 bottom-0 z-40 flex items-stretch gap-px border-t border-gold-500/30 bg-ink-950/95 backdrop-blur-md transition-transform duration-500 sm:hidden ${
+      className={`fixed inset-x-0 bottom-0 z-40 flex items-stretch gap-px border-t border-accent-500/30 bg-ink-950/95 backdrop-blur-md transition-transform duration-500 sm:hidden ${
         visible ? 'translate-y-0' : 'translate-y-full'
       }`}
       style={{ paddingBottom: 'env(safe-area-inset-bottom)' }}
@@ -30,7 +30,7 @@ export function StickyMobileCTA() {
       </a>
       <a
         href="#devis"
-        className="flex flex-1 items-center justify-center gap-2 bg-gold-500 py-4 text-xs font-semibold uppercase tracking-wider text-ink-950"
+        className="flex flex-1 items-center justify-center gap-2 bg-accent-500 py-4 text-xs font-semibold uppercase tracking-wider text-white"
       >
         <ShieldCheck className="h-4 w-4" />
         {t.stickyCta}

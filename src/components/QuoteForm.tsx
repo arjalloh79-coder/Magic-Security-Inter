@@ -64,7 +64,7 @@ export function QuoteForm() {
   }
 
   const inputClass =
-    'w-full rounded-sm border border-white/15 bg-white/[0.04] px-4 py-3 text-sm text-white placeholder:text-white/30 outline-none transition-colors focus:border-gold-500/70 focus:bg-white/[0.06]'
+    'w-full rounded-sm border border-white/15 bg-white/[0.04] px-4 py-3 text-sm text-white placeholder:text-white/30 outline-none transition-colors focus:border-accent-500/70 focus:bg-white/[0.06]'
   const labelClass = 'mb-2 block text-xs font-semibold uppercase tracking-wider text-white/60'
 
   return (
@@ -183,8 +183,8 @@ export function QuoteForm() {
                     onClick={() => update('coverage', opt.key)}
                     className={`rounded-sm border px-3 py-3 text-xs font-semibold uppercase tracking-wider transition-colors sm:text-sm ${
                       form.coverage === opt.key
-                        ? 'border-gold-500 bg-gold-500 text-ink-950'
-                        : 'border-white/15 bg-white/[0.03] text-white/70 hover:border-gold-500/50'
+                        ? 'border-accent-500 bg-accent-500 text-white'
+                        : 'border-white/15 bg-white/[0.03] text-white/70 hover:border-accent-500/50'
                     }`}
                   >
                     {opt.label}
@@ -214,7 +214,7 @@ export function QuoteForm() {
           </button>
 
           {sent && (
-            <p className="mt-4 flex items-center gap-2 text-sm text-gold-500">
+            <p className="mt-4 flex items-center gap-2 text-sm text-accent-500">
               <CheckCircle2 className="h-4 w-4 shrink-0" />
               {t.quote.form.success}
             </p>

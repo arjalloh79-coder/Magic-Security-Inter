@@ -26,7 +26,7 @@ export function Hero() {
       <div ref={ref} className="relative mx-auto grid w-full max-w-7xl gap-12 px-5 sm:px-8 lg:grid-cols-[1.2fr_0.8fr] lg:items-end">
         <div>
           <div className="reveal flex items-center gap-2" style={{ transitionDelay: '0.05s' }}>
-            <ShieldCheck className="h-4 w-4 text-gold-500" />
+            <ShieldCheck className="h-4 w-4 text-accent-500" />
             <span className="section-eyebrow">{t.hero.eyebrow}</span>
           </div>
 
@@ -66,9 +66,9 @@ export function Hero() {
           ].map((stat) => (
             <div
               key={stat.label}
-              className="card-surface flex flex-col gap-1 px-3 py-4 text-center transition-colors duration-300 hover:border-gold-500/40 sm:px-4"
+              className="card-surface flex flex-col gap-1 px-3 py-4 text-center transition-colors duration-300 hover:border-accent-500/40 sm:px-4"
             >
-              <span className="text-[10px] font-semibold uppercase tracking-[0.2em] text-gold-500 sm:text-xs">
+              <span className="text-[10px] font-semibold uppercase tracking-[0.2em] text-accent-500 sm:text-xs">
                 {stat.label}
               </span>
               <span className="text-sm font-bold text-white sm:text-base">{stat.value}</span>
@@ -80,7 +80,7 @@ export function Hero() {
       <a
         href="#a-propos"
         aria-label={t.hero.scroll}
-        className="absolute bottom-6 left-1/2 hidden -translate-x-1/2 flex-col items-center gap-1 text-white/50 transition-colors hover:text-gold-500 sm:flex"
+        className="absolute bottom-6 left-1/2 hidden -translate-x-1/2 flex-col items-center gap-1 text-white/50 transition-colors hover:text-accent-500 sm:flex"
       >
         <span className="text-[10px] font-semibold uppercase tracking-[0.25em]">{t.hero.scroll}</span>
         <ChevronDown className="h-4 w-4 animate-bounce" />

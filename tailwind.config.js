@@ -11,12 +11,8 @@ export default {
           700: '#1b2127',
           600: '#252d35',
         },
-        gold: {
-          400: '#e8c876',
-          500: '#d4af37',
-          600: '#b3922b',
-        },
-        crimson: {
+        accent: {
+          400: '#e0374a',
           500: '#c8102e',
           600: '#a30d25',
         },
@@ -27,10 +23,10 @@ export default {
       },
       backgroundImage: {
         'grid-pattern':
-          'linear-gradient(rgba(212,175,55,0.06) 1px, transparent 1px), linear-gradient(90deg, rgba(212,175,55,0.06) 1px, transparent 1px)',
+          'linear-gradient(rgba(200,16,46,0.06) 1px, transparent 1px), linear-gradient(90deg, rgba(200,16,46,0.06) 1px, transparent 1px)',
       },
       boxShadow: {
-        gold: '0 0 0 1px rgba(212,175,55,0.35), 0 8px 30px -6px rgba(212,175,55,0.25)',
+        accent: '0 0 0 1px rgba(200,16,46,0.35), 0 8px 30px -6px rgba(200,16,46,0.25)',
       },
       keyframes: {
         'fade-up': {

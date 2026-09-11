@@ -32,11 +32,11 @@ export function Footer() {
           </div>
 
           <div>
-            <h4 className="text-xs font-semibold uppercase tracking-[0.25em] text-gold-500">{t.footer.quickLinks}</h4>
+            <h4 className="text-xs font-semibold uppercase tracking-[0.25em] text-accent-500">{t.footer.quickLinks}</h4>
             <ul className="mt-4 flex flex-col gap-2.5">
               {links.map((link) => (
                 <li key={link.id}>
-                  <a href={`#${link.id}`} className="text-sm text-white/60 transition-colors hover:text-gold-500">
+                  <a href={`#${link.id}`} className="text-sm text-white/60 transition-colors hover:text-accent-500">
                     {t.nav[link.key]}
                   </a>
                 </li>
@@ -45,23 +45,23 @@ export function Footer() {
           </div>
 
           <div>
-            <h4 className="text-xs font-semibold uppercase tracking-[0.25em] text-gold-500">{t.footer.contact}</h4>
+            <h4 className="text-xs font-semibold uppercase tracking-[0.25em] text-accent-500">{t.footer.contact}</h4>
             <ul className="mt-4 flex flex-col gap-3">
               <li className="flex items-start gap-2.5 text-sm text-white/60">
-                <MapPin className="mt-0.5 h-4 w-4 shrink-0 text-gold-500/70" />
+                <MapPin className="mt-0.5 h-4 w-4 shrink-0 text-accent-500/70" />
                 <span>{lang === 'fr' ? company.addressFr : company.addressEn}</span>
               </li>
               {company.phones.map((phone) => (
                 <li key={phone} className="flex items-center gap-2.5 text-sm text-white/60">
-                  <Phone className="h-4 w-4 shrink-0 text-gold-500/70" />
-                  <a href={phoneToTelHref(phone)} className="transition-colors hover:text-gold-500">
+                  <Phone className="h-4 w-4 shrink-0 text-accent-500/70" />
+                  <a href={phoneToTelHref(phone)} className="transition-colors hover:text-accent-500">
                     {phone}
                   </a>
                 </li>
               ))}
               <li className="flex items-center gap-2.5 text-sm text-white/60">
-                <Mail className="h-4 w-4 shrink-0 text-gold-500/70" />
-                <a href={`mailto:${company.email}`} className="break-all transition-colors hover:text-gold-500">
+                <Mail className="h-4 w-4 shrink-0 text-accent-500/70" />
+                <a href={`mailto:${company.email}`} className="break-all transition-colors hover:text-accent-500">
                   {company.email}
                 </a>
               </li>

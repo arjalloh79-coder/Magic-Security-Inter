@@ -27,6 +27,13 @@ export const translations = {
       stat3v: 'Fourni & pro',
       scroll: 'Découvrir',
     },
+    coverage: {
+      eyebrow: 'Zone de couverture',
+      title: 'Présents là où vous êtes, à Conakry',
+      subtitle: "Notre zone d'intervention actuelle couvre Conakry, avec une base à Coleah Domino, dans la commune de Matam.",
+      city: 'Conakry, Guinée',
+      district: 'Coleah Domino · Matam',
+    },
     trust: {
       eyebrow: 'Pourquoi nous choisir',
       title: 'Une équipe fiable, une protection sérieuse',
@@ -171,6 +178,13 @@ export const translations = {
       stat3: 'Equipment',
       stat3v: 'Provided & pro',
       scroll: 'Discover',
+    },
+    coverage: {
+      eyebrow: 'Coverage area',
+      title: 'Present where you are, in Conakry',
+      subtitle: 'Our current service area covers Conakry, based out of Coleah Domino in the Matam district.',
+      city: 'Conakry, Guinea',
+      district: 'Coleah Domino · Matam',
     },
     trust: {
       eyebrow: 'Why choose us',

@@ -22,7 +22,7 @@ export function AboutSection() {
         </span>
 
         <div className="reveal relative mt-8">
-          <Quote className="mx-auto h-9 w-9 text-gold-500/40" strokeWidth={1.5} />
+          <Quote className="mx-auto h-9 w-9 text-accent-500/40" strokeWidth={1.5} />
           <p className="mx-auto mt-4 max-w-3xl font-display text-2xl font-medium leading-snug tracking-tight text-white sm:text-3xl lg:text-4xl">
             {lang === 'fr' ? company.bioFr : company.bioEn}
           </p>
@@ -31,7 +31,7 @@ export function AboutSection() {
         <div className="reveal mt-14 grid gap-4 sm:grid-cols-3" style={{ transitionDelay: '120ms' }}>
           {facts.map((fact) => (
             <div key={fact.label} className="card-surface flex flex-col items-center gap-2 px-6 py-6">
-              <fact.icon className="h-5 w-5 text-gold-500" strokeWidth={1.75} />
+              <fact.icon className="h-5 w-5 text-accent-500" strokeWidth={1.75} />
               <span className="text-[11px] font-semibold uppercase tracking-[0.2em] text-white/45">{fact.label}</span>
               <span className="font-display text-base font-semibold text-white">{fact.value}</span>
             </div>

@@ -22,7 +22,7 @@ export function ContactSection() {
         <div className="mt-14 grid gap-6 lg:grid-cols-[0.9fr_1.1fr]">
           <div className="reveal flex flex-col gap-4">
             <div className="card-surface flex items-start gap-4 p-6">
-              <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-sm bg-gold-500/10 text-gold-500">
+              <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-sm bg-accent-500/10 text-accent-500">
                 <MapPin className="h-5 w-5" strokeWidth={1.75} />
               </div>
               <div>
@@ -34,7 +34,7 @@ export function ContactSection() {
             </div>
 
             <div className="card-surface flex items-start gap-4 p-6">
-              <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-sm bg-gold-500/10 text-gold-500">
+              <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-sm bg-accent-500/10 text-accent-500">
                 <Phone className="h-5 w-5" strokeWidth={1.75} />
               </div>
               <div className="flex-1">
@@ -44,7 +44,7 @@ export function ContactSection() {
                     <a
                       key={phone}
                       href={phoneToTelHref(phone)}
-                      className="text-sm font-medium text-white transition-colors hover:text-gold-500 sm:text-base"
+                      className="text-sm font-medium text-white transition-colors hover:text-accent-500 sm:text-base"
                     >
                       {phone}
                     </a>
@@ -54,14 +54,14 @@ export function ContactSection() {
             </div>
 
             <div className="card-surface flex items-start gap-4 p-6">
-              <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-sm bg-gold-500/10 text-gold-500">
+              <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-sm bg-accent-500/10 text-accent-500">
                 <Mail className="h-5 w-5" strokeWidth={1.75} />
               </div>
               <div className="min-w-0 flex-1">
                 <p className="text-xs font-semibold uppercase tracking-wider text-white/45">{t.contact.email}</p>
                 <a
                   href={`mailto:${company.email}`}
-                  className="mt-1 block truncate text-sm font-medium text-white transition-colors hover:text-gold-500 sm:text-base"
+                  className="mt-1 block truncate text-sm font-medium text-white transition-colors hover:text-accent-500 sm:text-base"
                 >
                   {company.email}
                 </a>

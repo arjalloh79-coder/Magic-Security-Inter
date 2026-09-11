@@ -62,7 +62,7 @@ export function PersonnelSection() {
             <ul className="mt-8 flex flex-col gap-4">
               {t.personnel.points.map((point) => (
                 <li key={point} className="flex items-start gap-3">
-                  <CheckCircle2 className="mt-0.5 h-5 w-5 shrink-0 text-gold-500" strokeWidth={1.75} />
+                  <CheckCircle2 className="mt-0.5 h-5 w-5 shrink-0 text-accent-500" strokeWidth={1.75} />
                   <span className="text-sm text-white/75 sm:text-base">{point}</span>
                 </li>
               ))}

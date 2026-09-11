@@ -3,6 +3,7 @@ import { Navbar } from './components/Navbar'
 import { Hero } from './components/Hero'
 import { MarqueeBar } from './components/MarqueeBar'
 import { AboutSection } from './components/AboutSection'
+import { CoverageSection } from './components/CoverageSection'
 import { TrustSection } from './components/TrustSection'
 import { ServicesSection } from './components/ServicesSection'
 import { PersonnelSection } from './components/PersonnelSection'
@@ -22,6 +23,7 @@ function App() {
           <Hero />
           <MarqueeBar />
           <AboutSection />
+          <CoverageSection />
           <TrustSection />
           <ServicesSection />
           <PersonnelSection />
