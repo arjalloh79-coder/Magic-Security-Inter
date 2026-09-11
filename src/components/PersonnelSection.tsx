@@ -1,8 +1,10 @@
 import { CheckCircle2, Users } from 'lucide-react'
 import { useLanguage } from '../i18n/LanguageContext'
 import { useReveal } from '../hooks/useReveal'
-import { imageSrc } from '../lib/assets'
+import { imageSrc, imageSrcSet } from '../lib/assets'
 import { PhotoSlot } from './PhotoSlot'
+
+const PHOTO_SIZES = '(min-width: 1024px) 310px, 45vw'
 
 export function PersonnelSection() {
   const { t } = useLanguage()
@@ -10,22 +12,30 @@ export function PersonnelSection() {
 
   const photos = [
     {
-      src: imageSrc('agents-mission.jpg'),
+      file: 'agents-mission.jpg',
+      width: 720,
+      height: 960,
       alt: 'Agent MAGIC SECURITY INTER en mission de sécurité événementielle',
       label: 'Agent en mission — public/images/agents-mission.jpg',
     },
     {
-      src: imageSrc('agents-vehicle.jpg'),
+      file: 'agents-vehicle.jpg',
+      width: 960,
+      height: 720,
       alt: "Véhicule d'intervention MAGIC SECURITY INTER",
       label: 'Véhicule MSI — public/images/agents-vehicle.jpg',
     },
     {
-      src: imageSrc('agents-team.jpg'),
+      file: 'agents-team.jpg',
+      width: 551,
+      height: 1024,
       alt: "Équipe d'agents MAGIC SECURITY INTER en poste",
       label: 'Équipe MSI — public/images/agents-team.jpg',
     },
     {
-      src: imageSrc('event-crowd.jpg'),
+      file: 'event-crowd.jpg',
+      width: 720,
+      height: 960,
       alt: 'Agents MAGIC SECURITY INTER en sécurité événementielle',
       label: 'Sécurité événementielle — public/images/event-crowd.jpg',
     },
@@ -37,9 +47,13 @@ export function PersonnelSection() {
         <div className="grid gap-12 lg:grid-cols-2 lg:items-center lg:gap-16">
           <div className="reveal grid grid-cols-2 gap-4">
             {photos.map((photo) => (
-              <div key={photo.src} className="relative h-48 overflow-hidden border border-white/10 sm:h-60">
+              <div key={photo.file} className="relative h-48 overflow-hidden border border-white/10 sm:h-60">
                 <PhotoSlot
-                  src={photo.src}
+                  src={imageSrc(photo.file)}
+                  srcSet={imageSrcSet(photo.file, photo.width, [{ suffix: '-480w', width: 480 }])}
+                  sizes={PHOTO_SIZES}
+                  width={photo.width}
+                  height={photo.height}
                   alt={photo.alt}
                   label={photo.label}
                   className="relative h-full w-full"

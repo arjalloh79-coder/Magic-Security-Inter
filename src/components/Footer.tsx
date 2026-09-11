@@ -1,7 +1,7 @@
-import { MapPin, Phone, Mail } from 'lucide-react'
+import { MapPin, Phone, Mail, Facebook, Instagram, Linkedin } from 'lucide-react'
 import { Logo } from './Logo'
 import { useLanguage } from '../i18n/LanguageContext'
-import { company, phoneToTelHref } from '../data/company'
+import { company, agency, phoneToTelHref } from '../data/company'
 
 const links: { id: string; key: 'home' | 'about' | 'services' | 'equipment' | 'why' | 'contact' }[] = [
   { id: 'accueil', key: 'home' },
@@ -70,18 +70,44 @@ export function Footer() {
         </div>
 
         <div className="flex flex-col items-center justify-between gap-4 border-t border-white/10 py-6 sm:flex-row">
-          <p className="text-xs text-white/40">
-            © 2026 {company.name}. {t.footer.rights}
-          </p>
-          <div className="flex items-center gap-3 text-white/30">
-            {['facebook', 'instagram', 'linkedin'].map((platform) => (
-              <span
-                key={platform}
-                aria-hidden="true"
-                className="flex h-8 w-8 items-center justify-center rounded-full border border-white/10 text-[10px] uppercase"
-                title={lang === 'fr' ? 'Réseau social (à venir)' : 'Social network (coming soon)'}
+          <div className="flex flex-col items-center gap-1 text-center sm:items-start sm:text-left">
+            <p className="text-xs text-white/40">
+              © 2026 {company.name}. {t.footer.rights}
+            </p>
+            <p className="text-xs text-white/30">
+              {t.footer.credit}{' '}
+              <a
+                href={agency.url}
+                target="_blank"
+                rel="noreferrer"
+                className="font-medium text-white/50 transition-colors hover:text-accent-500"
               >
-                {platform[0].toUpperCase()}
+                {t.footer.creditAgency}
+              </a>
+            </p>
+          </div>
+
+          <div className="flex items-center gap-3">
+            <a
+              href={company.facebookUrl}
+              target="_blank"
+              rel="noreferrer"
+              aria-label="Facebook"
+              className="flex h-9 w-9 items-center justify-center rounded-full border border-white/15 text-white/50 transition-all duration-300 hover:border-accent-500/60 hover:text-accent-500 hover:scale-110"
+            >
+              <Facebook className="h-4 w-4" strokeWidth={1.75} />
+            </a>
+            {[
+              { Icon: Instagram, label: 'Instagram' },
+              { Icon: Linkedin, label: 'LinkedIn' },
+            ].map(({ Icon, label }) => (
+              <span
+                key={label}
+                aria-label={`${label} — ${lang === 'fr' ? 'bientôt disponible' : 'coming soon'}`}
+                title={lang === 'fr' ? 'Réseau social (à venir)' : 'Social network (coming soon)'}
+                className="flex h-9 w-9 items-center justify-center rounded-full border border-white/10 text-white/25 transition-all duration-300 hover:border-white/20 hover:text-white/40"
+              >
+                <Icon className="h-4 w-4" strokeWidth={1.75} />
               </span>
             ))}
           </div>

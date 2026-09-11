@@ -1,8 +1,9 @@
 import { useState, type FormEvent } from 'react'
-import { Send, CheckCircle2 } from 'lucide-react'
+import { Send } from 'lucide-react'
 import { useLanguage } from '../i18n/LanguageContext'
 import { useReveal } from '../hooks/useReveal'
-import { company } from '../data/company'
+import { company, agency } from '../data/company'
+import { Toast } from './Toast'
 
 interface FormState {
   name: string
@@ -15,6 +16,8 @@ interface FormState {
   message: string
 }
 
+type FormErrors = Partial<Record<'name' | 'phone' | 'email', string>>
+
 const initialState: FormState = {
   name: '',
   company: '',
@@ -26,20 +29,45 @@ const initialState: FormState = {
   message: '',
 }
 
+const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
+const PHONE_RE = /^[+\d][\d\s().-]{5,}$/
+
 export function QuoteForm() {
   const { t, lang } = useLanguage()
   const ref = useReveal<HTMLDivElement>()
   const [form, setForm] = useState<FormState>(initialState)
-  const [sent, setSent] = useState(false)
+  const [errors, setErrors] = useState<FormErrors>({})
+  const [toastOpen, setToastOpen] = useState(false)
 
   const serviceOptions = t.services.items.map((item) => item.title)
 
   function update<K extends keyof FormState>(key: K, value: FormState[K]) {
     setForm((prev) => ({ ...prev, [key]: value }))
+    if (key === 'name' || key === 'phone' || key === 'email') {
+      setErrors((prev) => ({ ...prev, [key]: undefined }))
+    }
+  }
+
+  function validate(): FormErrors {
+    const next: FormErrors = {}
+    if (!form.name.trim()) next.name = t.quote.form.errorRequired
+    if (!form.phone.trim()) next.phone = t.quote.form.errorRequired
+    else if (!PHONE_RE.test(form.phone.trim())) next.phone = t.quote.form.errorPhone
+    if (!form.email.trim()) next.email = t.quote.form.errorRequired
+    else if (!EMAIL_RE.test(form.email.trim())) next.email = t.quote.form.errorEmail
+    return next
   }
 
   function handleSubmit(e: FormEvent) {
     e.preventDefault()
+
+    const validation = validate()
+    setErrors(validation)
+    if (Object.keys(validation).length > 0) {
+      const firstKey = Object.keys(validation)[0]
+      document.getElementById(`q-${firstKey}`)?.focus()
+      return
+    }
 
     const subject = lang === 'fr' ? `Demande de devis — ${form.name || 'Client'}` : `Quote request — ${form.name || 'Client'}`
     const bodyLines = [
@@ -55,17 +83,25 @@ export function QuoteForm() {
       form.message,
     ]
 
-    const mailto = `mailto:${company.email}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(
-      bodyLines.join('\n'),
-    )}`
+    const mailto = `mailto:${company.email}?cc=${encodeURIComponent(agency.email)}&subject=${encodeURIComponent(
+      subject,
+    )}&body=${encodeURIComponent(bodyLines.join('\n'))}`
 
     window.location.href = mailto
-    setSent(true)
+    setToastOpen(true)
+    setForm(initialState)
   }
 
-  const inputClass =
-    'w-full rounded-sm border border-white/15 bg-white/[0.04] px-4 py-3 text-sm text-white placeholder:text-white/30 outline-none transition-colors focus:border-accent-500/70 focus:bg-white/[0.06]'
+  const baseInput =
+    'w-full rounded-sm border bg-white/[0.04] px-4 py-3 text-sm text-white placeholder:text-white/30 outline-none transition-colors focus:bg-white/[0.06]'
+  const okBorder = 'border-white/15 focus:border-accent-500/70'
+  const errBorder = 'border-accent-500 focus:border-accent-500'
   const labelClass = 'mb-2 block text-xs font-semibold uppercase tracking-wider text-white/60'
+  const errorText = 'mt-1.5 text-xs font-medium text-accent-500'
+
+  function fieldClass(key: keyof FormErrors) {
+    return `${baseInput} ${errors[key] ? errBorder : okBorder}`
+  }
 
   return (
     <section id="devis" className="relative overflow-hidden bg-ink-900 py-20 sm:py-28">
@@ -79,7 +115,12 @@ export function QuoteForm() {
           <p className="mt-5 text-base leading-relaxed text-white/65 sm:text-lg">{t.quote.subtitle}</p>
         </div>
 
-        <form onSubmit={handleSubmit} className="reveal mt-12 card-surface p-6 sm:p-10" style={{ transitionDelay: '120ms' }}>
+        <form
+          onSubmit={handleSubmit}
+          noValidate
+          className="reveal mt-12 card-surface p-6 sm:p-10"
+          style={{ transitionDelay: '120ms' }}
+        >
           <div className="grid gap-6 sm:grid-cols-2">
             <div>
               <label className={labelClass} htmlFor="q-name">
@@ -87,12 +128,18 @@ export function QuoteForm() {
               </label>
               <input
                 id="q-name"
-                required
                 value={form.name}
                 onChange={(e) => update('name', e.target.value)}
                 placeholder={t.quote.form.namePh}
-                className={inputClass}
+                aria-invalid={Boolean(errors.name)}
+                aria-describedby={errors.name ? 'q-name-error' : undefined}
+                className={fieldClass('name')}
               />
+              {errors.name && (
+                <p id="q-name-error" className={errorText}>
+                  {errors.name}
+                </p>
+              )}
             </div>
             <div>
               <label className={labelClass} htmlFor="q-company">
@@ -103,7 +150,7 @@ export function QuoteForm() {
                 value={form.company}
                 onChange={(e) => update('company', e.target.value)}
                 placeholder={t.quote.form.companyPh}
-                className={inputClass}
+                className={`${baseInput} ${okBorder}`}
               />
             </div>
             <div>
@@ -112,13 +159,19 @@ export function QuoteForm() {
               </label>
               <input
                 id="q-phone"
-                required
                 type="tel"
                 value={form.phone}
                 onChange={(e) => update('phone', e.target.value)}
                 placeholder={t.quote.form.phonePh}
-                className={inputClass}
+                aria-invalid={Boolean(errors.phone)}
+                aria-describedby={errors.phone ? 'q-phone-error' : undefined}
+                className={fieldClass('phone')}
               />
+              {errors.phone && (
+                <p id="q-phone-error" className={errorText}>
+                  {errors.phone}
+                </p>
+              )}
             </div>
             <div>
               <label className={labelClass} htmlFor="q-email">
@@ -126,13 +179,19 @@ export function QuoteForm() {
               </label>
               <input
                 id="q-email"
-                required
                 type="email"
                 value={form.email}
                 onChange={(e) => update('email', e.target.value)}
                 placeholder={t.quote.form.emailPh}
-                className={inputClass}
+                aria-invalid={Boolean(errors.email)}
+                aria-describedby={errors.email ? 'q-email-error' : undefined}
+                className={fieldClass('email')}
               />
+              {errors.email && (
+                <p id="q-email-error" className={errorText}>
+                  {errors.email}
+                </p>
+              )}
             </div>
             <div>
               <label className={labelClass} htmlFor="q-service">
@@ -142,7 +201,7 @@ export function QuoteForm() {
                 id="q-service"
                 value={form.serviceType}
                 onChange={(e) => update('serviceType', e.target.value)}
-                className={`${inputClass} appearance-none`}
+                className={`${baseInput} ${okBorder} appearance-none`}
               >
                 <option value="" className="bg-ink-900">
                   {t.quote.form.serviceTypePh}
@@ -165,7 +224,7 @@ export function QuoteForm() {
                 value={form.agents}
                 onChange={(e) => update('agents', e.target.value)}
                 placeholder={t.quote.form.agentsPh}
-                className={inputClass}
+                className={`${baseInput} ${okBorder}`}
               />
             </div>
 
@@ -176,20 +235,24 @@ export function QuoteForm() {
                   { key: 'Jour', label: t.quote.form.coverageDay },
                   { key: 'Nuit', label: t.quote.form.coverageNight },
                   { key: 'Rotation', label: t.quote.form.coverageRotation },
-                ].map((opt) => (
-                  <button
-                    type="button"
-                    key={opt.key}
-                    onClick={() => update('coverage', opt.key)}
-                    className={`rounded-sm border px-3 py-3 text-xs font-semibold uppercase tracking-wider transition-colors sm:text-sm ${
-                      form.coverage === opt.key
-                        ? 'border-accent-500 bg-accent-500 text-white'
-                        : 'border-white/15 bg-white/[0.03] text-white/70 hover:border-accent-500/50'
-                    }`}
-                  >
-                    {opt.label}
-                  </button>
-                ))}
+                ].map((opt) => {
+                  const active = form.coverage === opt.key
+                  return (
+                    <button
+                      type="button"
+                      key={opt.key}
+                      onClick={() => update('coverage', opt.key)}
+                      aria-pressed={active}
+                      className={`rounded-sm border px-3 py-3 text-xs font-semibold uppercase tracking-wider transition-all duration-200 sm:text-sm ${
+                        active
+                          ? 'border-accent-500 bg-accent-500 text-white shadow-accent'
+                          : 'border-white/15 bg-white/[0.03] text-white/70 hover:border-accent-500/50 hover:text-white'
+                      }`}
+                    >
+                      {opt.label}
+                    </button>
+                  )
+                })}
               </div>
             </div>
 
@@ -203,7 +266,7 @@ export function QuoteForm() {
                 value={form.message}
                 onChange={(e) => update('message', e.target.value)}
                 placeholder={t.quote.form.messagePh}
-                className={`${inputClass} resize-none`}
+                className={`${baseInput} ${okBorder} resize-none`}
               />
             </div>
           </div>
@@ -212,15 +275,10 @@ export function QuoteForm() {
             {t.quote.form.submit}
             <Send className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" />
           </button>
-
-          {sent && (
-            <p className="mt-4 flex items-center gap-2 text-sm text-accent-500">
-              <CheckCircle2 className="h-4 w-4 shrink-0" />
-              {t.quote.form.success}
-            </p>
-          )}
         </form>
       </div>
+
+      <Toast message={t.quote.form.success} show={toastOpen} onClose={() => setToastOpen(false)} />
     </section>
   )
 }

@@ -6,6 +6,17 @@ html {
   scroll-behavior: smooth;
 }
 
+/* Keeps anchor-linked sections from landing partially hidden behind the fixed navbar. */
+section[id] {
+  scroll-margin-top: 5.5rem;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+}
+
 body {
   @apply bg-ink-950 text-white font-sans antialiased;
 }

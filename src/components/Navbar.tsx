@@ -94,9 +94,21 @@ export function Navbar() {
             <button
               onClick={() => setOpen((v) => !v)}
               aria-label={open ? 'Fermer le menu' : 'Ouvrir le menu'}
-              className="rounded-sm border border-white/15 p-2 text-white"
+              aria-expanded={open}
+              className="relative rounded-sm border border-white/15 p-2 text-white transition-colors duration-300 hover:border-accent-500/60"
             >
-              {open ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
+              <span className="relative block h-5 w-5">
+                <Menu
+                  className={`absolute inset-0 h-5 w-5 transition-all duration-300 ${
+                    open ? 'rotate-90 opacity-0' : 'rotate-0 opacity-100'
+                  }`}
+                />
+                <X
+                  className={`absolute inset-0 h-5 w-5 transition-all duration-300 ${
+                    open ? 'rotate-0 opacity-100' : '-rotate-90 opacity-0'
+                  }`}
+                />
+              </span>
             </button>
           </div>
         </nav>
