@@ -13,7 +13,10 @@ export function Hero() {
       <div className="absolute inset-0">
         <PhotoSlot
           src={imageSrc('hero-agents.jpg')}
-          srcSet={imageSrcSet('hero-agents.jpg', 1170, [{ suffix: '-480w', width: 480 }])}
+          srcSet={imageSrcSet('hero-agents.jpg', 1170, [
+            { suffix: '-480w', width: 480 },
+            { suffix: '-800w', width: 800 },
+          ])}
           sizes="100vw"
           width={1170}
           height={877}

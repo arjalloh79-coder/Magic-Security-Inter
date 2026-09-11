@@ -8,6 +8,7 @@ import { TrustSection } from './components/TrustSection'
 import { ServicesSection } from './components/ServicesSection'
 import { PersonnelSection } from './components/PersonnelSection'
 import { EquipmentSection } from './components/EquipmentSection'
+import { GallerySection } from './components/GallerySection'
 import { QuoteForm } from './components/QuoteForm'
 import { ContactSection } from './components/ContactSection'
 import { Footer } from './components/Footer'
@@ -28,6 +29,7 @@ function App() {
           <ServicesSection />
           <PersonnelSection />
           <EquipmentSection />
+          <GallerySection />
           <QuoteForm />
           <ContactSection />
         </main>

@@ -2,11 +2,17 @@ export type Lang = 'fr' | 'en'
 
 export const translations = {
   fr: {
+    common: {
+      close: 'Fermer',
+      openMenu: 'Ouvrir le menu',
+      closeMenu: 'Fermer le menu',
+    },
     nav: {
       home: 'Accueil',
       about: 'À propos',
       services: 'Services',
       equipment: 'Équipements',
+      gallery: 'Galerie',
       why: 'Pourquoi nous',
       contact: 'Contact',
       cta: 'Demander un devis',
@@ -105,6 +111,45 @@ export const translations = {
         { title: 'Talkies-walkies', text: 'Communication en temps réel entre agents.' },
       ],
     },
+    gallery: {
+      eyebrow: 'Galerie',
+      title: 'Nos interventions en images',
+      subtitle: 'Un aperçu réel du travail de nos agents sur le terrain, à Conakry.',
+      filters: {
+        all: 'Tous',
+        equipment: 'Équipements',
+        intervention: 'Intervention',
+        services: 'Services',
+      },
+      items: [
+        {
+          title: 'Équipe en service de nuit',
+          alt: 'Agents MAGIC SECURITY INTER en service de nuit à Conakry',
+        },
+        {
+          title: 'Sécurité événementielle en stade',
+          alt: 'Agent MAGIC SECURITY INTER en mission de sécurité événementielle',
+        },
+        {
+          title: 'Véhicule de patrouille MSI',
+          alt: "Véhicule d'intervention MAGIC SECURITY INTER",
+        },
+        {
+          title: 'Équipe en tenue complète',
+          alt: "Équipe d'agents MAGIC SECURITY INTER en tenue et équipement complet",
+        },
+        {
+          title: 'Présence lors d’un événement public',
+          alt: 'Agents MAGIC SECURITY INTER assurant la sécurité d’un événement public',
+        },
+      ],
+      lightbox: {
+        close: 'Fermer',
+        prev: 'Précédent',
+        next: 'Suivant',
+        counterOf: 'sur',
+      },
+    },
     quote: {
       eyebrow: 'Devis gratuit',
       title: 'Besoin d’une solution de sécurité ?',
@@ -160,11 +205,17 @@ export const translations = {
     stickyCta: 'Devis gratuit',
   },
   en: {
+    common: {
+      close: 'Close',
+      openMenu: 'Open menu',
+      closeMenu: 'Close menu',
+    },
     nav: {
       home: 'Home',
       about: 'About',
       services: 'Services',
       equipment: 'Equipment',
+      gallery: 'Gallery',
       why: 'Why us',
       contact: 'Contact',
       cta: 'Get a quote',
@@ -260,6 +311,45 @@ export const translations = {
         { title: 'Flashlights', text: 'Lighting for patrols and night missions.' },
         { title: 'Walkie-talkies', text: 'Real-time communication between agents.' },
       ],
+    },
+    gallery: {
+      eyebrow: 'Gallery',
+      title: 'Our operations in pictures',
+      subtitle: "A real look at our agents' work on the ground in Conakry.",
+      filters: {
+        all: 'All',
+        equipment: 'Equipment',
+        intervention: 'Field operations',
+        services: 'Services',
+      },
+      items: [
+        {
+          title: 'Night shift team',
+          alt: 'MAGIC SECURITY INTER agents on night duty in Conakry',
+        },
+        {
+          title: 'Event security at the stadium',
+          alt: 'MAGIC SECURITY INTER agent on event security duty',
+        },
+        {
+          title: 'MSI patrol vehicle',
+          alt: 'MAGIC SECURITY INTER patrol vehicle',
+        },
+        {
+          title: 'Team in full uniform',
+          alt: 'MAGIC SECURITY INTER agents in full uniform and equipment',
+        },
+        {
+          title: 'Presence at a public event',
+          alt: 'MAGIC SECURITY INTER agents providing security at a public event',
+        },
+      ],
+      lightbox: {
+        close: 'Close',
+        prev: 'Previous',
+        next: 'Next',
+        counterOf: 'of',
+      },
     },
     quote: {
       eyebrow: 'Free quote',

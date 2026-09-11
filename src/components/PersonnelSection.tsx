@@ -15,6 +15,7 @@ export function PersonnelSection() {
       file: 'agents-mission.jpg',
       width: 720,
       height: 960,
+      variants: [{ suffix: '-480w', width: 480 }],
       alt: 'Agent MAGIC SECURITY INTER en mission de sécurité événementielle',
       label: 'Agent en mission — public/images/agents-mission.jpg',
     },
@@ -22,6 +23,10 @@ export function PersonnelSection() {
       file: 'agents-vehicle.jpg',
       width: 960,
       height: 720,
+      variants: [
+        { suffix: '-480w', width: 480 },
+        { suffix: '-800w', width: 800 },
+      ],
       alt: "Véhicule d'intervention MAGIC SECURITY INTER",
       label: 'Véhicule MSI — public/images/agents-vehicle.jpg',
     },
@@ -29,6 +34,7 @@ export function PersonnelSection() {
       file: 'agents-team.jpg',
       width: 551,
       height: 1024,
+      variants: [{ suffix: '-480w', width: 480 }],
       alt: "Équipe d'agents MAGIC SECURITY INTER en poste",
       label: 'Équipe MSI — public/images/agents-team.jpg',
     },
@@ -36,6 +42,7 @@ export function PersonnelSection() {
       file: 'event-crowd.jpg',
       width: 720,
       height: 960,
+      variants: [{ suffix: '-480w', width: 480 }],
       alt: 'Agents MAGIC SECURITY INTER en sécurité événementielle',
       label: 'Sécurité événementielle — public/images/event-crowd.jpg',
     },
@@ -50,7 +57,7 @@ export function PersonnelSection() {
               <div key={photo.file} className="relative h-48 overflow-hidden border border-white/10 sm:h-60">
                 <PhotoSlot
                   src={imageSrc(photo.file)}
-                  srcSet={imageSrcSet(photo.file, photo.width, [{ suffix: '-480w', width: 480 }])}
+                  srcSet={imageSrcSet(photo.file, photo.width, photo.variants)}
                   sizes={PHOTO_SIZES}
                   width={photo.width}
                   height={photo.height}

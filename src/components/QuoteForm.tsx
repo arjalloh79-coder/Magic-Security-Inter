@@ -278,7 +278,12 @@ export function QuoteForm() {
         </form>
       </div>
 
-      <Toast message={t.quote.form.success} show={toastOpen} onClose={() => setToastOpen(false)} />
+      <Toast
+        message={t.quote.form.success}
+        show={toastOpen}
+        onClose={() => setToastOpen(false)}
+        closeLabel={t.common.close}
+      />
     </section>
   )
 }

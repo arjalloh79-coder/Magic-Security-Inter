@@ -4,11 +4,12 @@ import { Logo } from './Logo'
 import { useLanguage } from '../i18n/LanguageContext'
 import { company, phoneToTelHref } from '../data/company'
 
-const sections: { id: string; key: 'home' | 'about' | 'services' | 'equipment' | 'why' | 'contact' }[] = [
+const sections: { id: string; key: 'home' | 'about' | 'services' | 'equipment' | 'gallery' | 'why' | 'contact' }[] = [
   { id: 'accueil', key: 'home' },
   { id: 'a-propos', key: 'about' },
   { id: 'services', key: 'services' },
   { id: 'equipements', key: 'equipment' },
+  { id: 'gallery', key: 'gallery' },
   { id: 'pourquoi-nous', key: 'why' },
   { id: 'contact', key: 'contact' },
 ]
@@ -48,7 +49,7 @@ export function Navbar() {
             </span>
           </a>
 
-          <ul className="hidden items-center gap-5 lg:flex xl:gap-8">
+          <ul className="hidden items-center gap-4 xl:flex 2xl:gap-6">
             {sections.map((s) => (
               <li key={s.id} className="whitespace-nowrap">
                 <a
@@ -61,10 +62,10 @@ export function Navbar() {
             ))}
           </ul>
 
-          <div className="hidden shrink-0 items-center gap-3 lg:flex xl:gap-4">
+          <div className="hidden shrink-0 items-center gap-3 xl:flex">
             <a
               href={phoneToTelHref(company.phones[0])}
-              className="hidden items-center gap-2 whitespace-nowrap text-sm font-medium text-white/70 hover:text-accent-500 xl:flex"
+              className="hidden items-center gap-2 whitespace-nowrap text-sm font-medium text-white/70 hover:text-accent-500 2xl:flex"
             >
               <Phone className="h-4 w-4 shrink-0" />
               {company.phones[0]}
@@ -82,7 +83,7 @@ export function Navbar() {
             </a>
           </div>
 
-          <div className="flex items-center gap-3 lg:hidden">
+          <div className="flex items-center gap-3 xl:hidden">
             <button
               onClick={toggleLang}
               aria-label="Changer de langue / Switch language"
@@ -93,7 +94,7 @@ export function Navbar() {
             </button>
             <button
               onClick={() => setOpen((v) => !v)}
-              aria-label={open ? 'Fermer le menu' : 'Ouvrir le menu'}
+              aria-label={open ? t.common.closeMenu : t.common.openMenu}
               aria-expanded={open}
               className="relative rounded-sm border border-white/15 p-2 text-white transition-colors duration-300 hover:border-accent-500/60"
             >
@@ -115,7 +116,7 @@ export function Navbar() {
       </div>
 
       <div
-        className={`overflow-hidden bg-ink-950/98 backdrop-blur-md transition-[max-height,opacity] duration-500 lg:hidden ${
+        className={`overflow-hidden bg-ink-950/98 backdrop-blur-md transition-[max-height,opacity] duration-500 xl:hidden ${
           open ? 'max-h-[32rem] opacity-100' : 'max-h-0 opacity-0'
         }`}
       >

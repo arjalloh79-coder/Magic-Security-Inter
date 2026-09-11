@@ -3,11 +3,12 @@ import { Logo } from './Logo'
 import { useLanguage } from '../i18n/LanguageContext'
 import { company, agency, phoneToTelHref } from '../data/company'
 
-const links: { id: string; key: 'home' | 'about' | 'services' | 'equipment' | 'why' | 'contact' }[] = [
+const links: { id: string; key: 'home' | 'about' | 'services' | 'equipment' | 'gallery' | 'why' | 'contact' }[] = [
   { id: 'accueil', key: 'home' },
   { id: 'a-propos', key: 'about' },
   { id: 'services', key: 'services' },
   { id: 'equipements', key: 'equipment' },
+  { id: 'gallery', key: 'gallery' },
   { id: 'pourquoi-nous', key: 'why' },
   { id: 'contact', key: 'contact' },
 ]

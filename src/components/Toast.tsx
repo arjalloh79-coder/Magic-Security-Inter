@@ -5,10 +5,11 @@ interface ToastProps {
   message: string
   show: boolean
   onClose: () => void
+  closeLabel: string
   durationMs?: number
 }
 
-export function Toast({ message, show, onClose, durationMs = 5000 }: ToastProps) {
+export function Toast({ message, show, onClose, closeLabel, durationMs = 5000 }: ToastProps) {
   const [visible, setVisible] = useState(false)
 
   useEffect(() => {
@@ -39,7 +40,7 @@ export function Toast({ message, show, onClose, durationMs = 5000 }: ToastProps)
       <button
         type="button"
         onClick={() => setVisible(false)}
-        aria-label="Fermer"
+        aria-label={closeLabel}
         className="shrink-0 text-white/40 transition-colors hover:text-white"
       >
         <X className="h-4 w-4" />
