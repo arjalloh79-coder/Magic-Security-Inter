@@ -1,0 +1,82 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html {
+  scroll-behavior: smooth;
+}
+
+/* Keeps anchor-linked sections from landing partially hidden behind the fixed navbar. */
+section[id] {
+  scroll-margin-top: 5.5rem;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+}
+
+body {
+  @apply bg-ink-950 text-white font-sans antialiased;
+}
+
+::selection {
+  background: rgba(200, 16, 46, 0.45);
+  color: #fff;
+}
+
+::-webkit-scrollbar {
+  width: 10px;
+}
+::-webkit-scrollbar-track {
+  background: #0c0f12;
+}
+::-webkit-scrollbar-thumb {
+  background: #2a323b;
+  border-radius: 999px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #c8102e;
+}
+
+.reveal {
+  opacity: 0;
+  transform: translateY(28px);
+  transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.reveal.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.text-shimmer {
+  background: linear-gradient(90deg, #c8102e 0%, #ffffff 25%, #e0374a 50%, #ffffff 75%, #c8102e 100%);
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  animation: shimmer 4s linear infinite;
+}
+
+.section-eyebrow {
+  @apply inline-flex items-center gap-2 text-xs sm:text-sm font-semibold uppercase tracking-[0.25em] text-accent-500;
+}
+
+.btn-primary {
+  @apply inline-flex items-center justify-center gap-2 rounded-sm bg-accent-500 px-6 py-3.5 text-sm sm:text-base font-semibold uppercase tracking-wider text-white transition-all duration-300 hover:bg-accent-400 hover:shadow-accent active:scale-[0.98];
+}
+
+.btn-secondary {
+  @apply inline-flex items-center justify-center gap-2 rounded-sm border border-white/25 bg-white/[0.03] px-6 py-3.5 text-sm sm:text-base font-semibold uppercase tracking-wider text-white backdrop-blur-sm transition-all duration-300 hover:border-accent-500/60 hover:bg-white/[0.08] active:scale-[0.98];
+}
+
+.card-surface {
+  @apply rounded-sm border border-white/10 bg-white/[0.03] backdrop-blur-sm;
+}
+
+.grid-overlay {
+  background-image: linear-gradient(rgba(200, 16, 46, 0.08) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(200, 16, 46, 0.08) 1px, transparent 1px);
+  background-size: 44px 44px;
+}
