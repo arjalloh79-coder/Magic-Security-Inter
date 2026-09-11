@@ -1,3 +1,4 @@
+import { useState } from 'react'
 import { ImageOff, type LucideIcon } from 'lucide-react'
 
 interface PhotoSlotProps {
@@ -10,19 +11,32 @@ interface PhotoSlotProps {
 }
 
 /**
- * Renders a real <img> when `src` resolves; otherwise shows a clearly
- * labeled placeholder panel so the layout stays production-ready while
- * client photography is pending. Replace the `src` with a file placed in
- * /public/images to activate it — no code change needed beyond the path.
+ * Renders a real <img> once `src` has actually loaded; otherwise (missing
+ * prop, 404, or load failure) shows a clearly labeled placeholder panel so
+ * the layout never shows a broken-image glyph or blank frame. Add a file at
+ * the given path under /public/images to activate it automatically — no
+ * code change needed.
  */
 export function PhotoSlot({ src, alt, icon: Icon = ImageOff, label, className = '', imgClassName = '' }: PhotoSlotProps) {
-  if (src) {
-    return <img src={src} alt={alt} loading="lazy" className={`${imgClassName} object-cover`} />
+  const [failed, setFailed] = useState(false)
+
+  if (src && !failed) {
+    return (
+      <img
+        src={src}
+        alt={alt}
+        loading="lazy"
+        width={1200}
+        height={900}
+        onError={() => setFailed(true)}
+        className={`${imgClassName} object-cover`}
+      />
+    )
   }
 
   return (
     <div
-      className={`flex flex-col items-center justify-center gap-3 border border-dashed border-white/15 bg-gradient-to-br from-ink-800 via-ink-900 to-ink-950 text-center ${className}`}
+      className={`relative flex flex-col items-center justify-center gap-3 overflow-hidden border border-dashed border-white/15 bg-gradient-to-br from-ink-800 via-ink-900 to-ink-950 text-center ${className}`}
     >
       <div className="grid-overlay absolute inset-0 opacity-40" />
       <Icon className="relative h-8 w-8 text-gold-500/70" strokeWidth={1.5} />

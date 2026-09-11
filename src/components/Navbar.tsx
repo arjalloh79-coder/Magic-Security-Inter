@@ -39,18 +39,18 @@ export function Navbar() {
       }`}
     >
       <div className={`border-b transition-colors duration-500 ${scrolled ? 'border-white/10' : 'border-transparent'}`}>
-        <nav className="mx-auto flex max-w-7xl items-center justify-between px-5 py-3 sm:px-8">
-          <a href="#accueil" className="flex items-center gap-3 shrink-0">
-            <Logo className="h-11 w-11 sm:h-12 sm:w-12" />
-            <span className="hidden flex-col leading-tight sm:flex">
+        <nav className="mx-auto flex max-w-7xl items-center justify-between gap-4 px-5 py-3 sm:px-8">
+          <a href="#accueil" className="flex shrink-0 items-center gap-3">
+            <Logo className="h-11 w-11 shrink-0 sm:h-12 sm:w-12" />
+            <span className="hidden flex-col whitespace-nowrap leading-tight sm:flex">
               <span className="font-display text-base font-bold tracking-wide text-white">MAGIC SECURITY</span>
               <span className="text-[11px] font-semibold uppercase tracking-[0.3em] text-gold-500">Inter</span>
             </span>
           </a>
 
-          <ul className="hidden items-center gap-8 lg:flex">
+          <ul className="hidden items-center gap-5 lg:flex xl:gap-8">
             {sections.map((s) => (
-              <li key={s.id}>
+              <li key={s.id} className="whitespace-nowrap">
                 <a
                   href={`#${s.id}`}
                   className="text-sm font-medium text-white/80 transition-colors duration-200 hover:text-gold-500"
@@ -61,23 +61,23 @@ export function Navbar() {
             ))}
           </ul>
 
-          <div className="hidden items-center gap-4 lg:flex">
+          <div className="hidden shrink-0 items-center gap-3 lg:flex xl:gap-4">
             <a
               href={phoneToTelHref(company.phones[0])}
-              className="flex items-center gap-2 text-sm font-medium text-white/70 hover:text-gold-500"
+              className="hidden items-center gap-2 whitespace-nowrap text-sm font-medium text-white/70 hover:text-gold-500 xl:flex"
             >
-              <Phone className="h-4 w-4" />
+              <Phone className="h-4 w-4 shrink-0" />
               {company.phones[0]}
             </a>
             <button
               onClick={toggleLang}
               aria-label="Changer de langue / Switch language"
-              className="flex items-center gap-1.5 rounded-sm border border-white/15 px-3 py-2 text-xs font-semibold uppercase tracking-wider text-white/80 transition-colors hover:border-gold-500/60 hover:text-gold-500"
+              className="flex shrink-0 items-center gap-1.5 rounded-sm border border-white/15 px-3 py-2 text-xs font-semibold uppercase tracking-wider text-white/80 transition-colors hover:border-gold-500/60 hover:text-gold-500"
             >
               <Globe className="h-3.5 w-3.5" />
               {lang === 'fr' ? 'FR' : 'EN'}
             </button>
-            <a href="#devis" className="btn-primary !px-5 !py-2.5 !text-xs">
+            <a href="#devis" className="btn-primary !px-5 !py-2.5 !text-xs shrink-0 whitespace-nowrap">
               {t.nav.cta}
             </a>
           </div>

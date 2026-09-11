@@ -82,7 +82,7 @@ export function ContactSection() {
           <div className="reveal relative min-h-[22rem] overflow-hidden border border-white/10 lg:min-h-full" style={{ transitionDelay: '120ms' }}>
             <iframe
               title="MAGIC SECURITY INTER — Coleah Domino, Matam, Conakry"
-              src={`https://maps.google.com/maps?q=${mapQuery}&z=15&output=embed`}
+              src={`https://www.google.com/maps?q=${mapQuery}&z=15&output=embed`}
               className="h-full min-h-[22rem] w-full grayscale invert-[0.92] contrast-[1.05] lg:min-h-full"
               loading="lazy"
               referrerPolicy="no-referrer-when-downgrade"
