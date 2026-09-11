@@ -1,6 +1,7 @@
 import { ArrowRight, Phone, ShieldCheck, ChevronDown } from 'lucide-react'
 import { useLanguage } from '../i18n/LanguageContext'
 import { useReveal } from '../hooks/useReveal'
+import { imageSrc } from '../lib/assets'
 import { PhotoSlot } from './PhotoSlot'
 
 export function Hero() {
@@ -11,7 +12,7 @@ export function Hero() {
     <section id="accueil" className="relative flex min-h-[100svh] items-center overflow-hidden bg-ink-950 pt-24 pb-16">
       <div className="absolute inset-0">
         <PhotoSlot
-          src="/images/hero-agents.jpg"
+          src={imageSrc('hero-agents.jpg')}
           alt="Agents de sécurité MAGIC SECURITY INTER en mission"
           label="Photo hero : agents MSI sur le terrain — /public/images/hero-agents.jpg"
           className="relative h-full w-full"

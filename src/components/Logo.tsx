@@ -1,11 +1,12 @@
 import { useState } from 'react'
+import { imageSrc } from '../lib/assets'
 
 interface LogoProps {
   className?: string
   title?: string
 }
 
-const LOGO_SRC = '/images/logo-msi.jpg'
+const LOGO_SRC = imageSrc('logo-msi.jpg')
 
 /**
  * Renders the client's real MSI badge once the file has loaded; if it's

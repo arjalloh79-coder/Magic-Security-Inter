@@ -1,44 +1,52 @@
 import { CheckCircle2, Users } from 'lucide-react'
 import { useLanguage } from '../i18n/LanguageContext'
 import { useReveal } from '../hooks/useReveal'
+import { imageSrc } from '../lib/assets'
 import { PhotoSlot } from './PhotoSlot'
 
 export function PersonnelSection() {
   const { t } = useLanguage()
   const ref = useReveal<HTMLDivElement>()
 
+  const photos = [
+    {
+      src: imageSrc('agents-mission.jpg'),
+      alt: 'Agent MAGIC SECURITY INTER en mission de sécurité événementielle',
+      label: 'Agent en mission — public/images/agents-mission.jpg',
+    },
+    {
+      src: imageSrc('agents-vehicle.jpg'),
+      alt: "Véhicule d'intervention MAGIC SECURITY INTER",
+      label: 'Véhicule MSI — public/images/agents-vehicle.jpg',
+    },
+    {
+      src: imageSrc('agents-team.jpg'),
+      alt: "Équipe d'agents MAGIC SECURITY INTER en poste",
+      label: 'Équipe MSI — public/images/agents-team.jpg',
+    },
+    {
+      src: imageSrc('event-crowd.jpg'),
+      alt: 'Agents MAGIC SECURITY INTER en sécurité événementielle',
+      label: 'Sécurité événementielle — public/images/event-crowd.jpg',
+    },
+  ]
+
   return (
     <section className="relative bg-ink-900 py-20 sm:py-28">
       <div ref={ref} className="mx-auto max-w-7xl px-5 sm:px-8">
         <div className="grid gap-12 lg:grid-cols-2 lg:items-center lg:gap-16">
           <div className="reveal grid grid-cols-2 gap-4">
-            <div className="col-span-2 relative h-64 overflow-hidden border border-white/10 sm:h-72">
-              <PhotoSlot
-                src="/images/agents-mission.jpg"
-                alt="Agent MAGIC SECURITY INTER en mission de sécurité événementielle"
-                label="Agent en mission — /public/images/agents-mission.jpg"
-                className="relative h-full w-full"
-                imgClassName="h-full w-full transition-transform duration-700 hover:scale-105"
-              />
-            </div>
-            <div className="relative h-44 overflow-hidden border border-white/10 sm:h-52">
-              <PhotoSlot
-                src="/images/agents-vehicle.jpg"
-                alt="Véhicule d'intervention MAGIC SECURITY INTER"
-                label="Véhicule MSI — /public/images/agents-vehicle.jpg"
-                className="relative h-full w-full"
-                imgClassName="h-full w-full transition-transform duration-700 hover:scale-105"
-              />
-            </div>
-            <div className="relative h-44 overflow-hidden border border-white/10 sm:h-52">
-              <PhotoSlot
-                src="/images/agents-team.jpg"
-                alt="Équipe d'agents MAGIC SECURITY INTER en poste"
-                label="Équipe MSI — /public/images/agents-team.jpg"
-                className="relative h-full w-full"
-                imgClassName="h-full w-full transition-transform duration-700 hover:scale-105"
-              />
-            </div>
+            {photos.map((photo) => (
+              <div key={photo.src} className="relative h-48 overflow-hidden border border-white/10 sm:h-60">
+                <PhotoSlot
+                  src={photo.src}
+                  alt={photo.alt}
+                  label={photo.label}
+                  className="relative h-full w-full"
+                  imgClassName="h-full w-full transition-transform duration-700 hover:scale-105"
+                />
+              </div>
+            ))}
           </div>
 
           <div className="reveal" style={{ transitionDelay: '120ms' }}>
