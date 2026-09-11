@@ -30,8 +30,3 @@ export function phoneToWhatsAppHref(phone: string) {
 export function googleMapsSearchHref(query: string) {
   return `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(query)}`
 }
-
-export function openStreetMapEmbedSrc(lat: number, lon: number, delta = 0.015) {
-  const bbox = [lon - delta * 1.3, lat - delta, lon + delta * 1.3, lat + delta].join(',')
-  return `https://www.openstreetmap.org/export/embed.html?bbox=${bbox}&layer=mapnik&marker=${lat},${lon}`
-}

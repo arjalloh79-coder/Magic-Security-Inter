@@ -1,13 +1,13 @@
 import { MapPin, Phone, Mail, MessageCircle, ExternalLink } from 'lucide-react'
 import { useLanguage } from '../i18n/LanguageContext'
 import { useReveal } from '../hooks/useReveal'
-import { company, phoneToTelHref, phoneToWhatsAppHref, googleMapsSearchHref, openStreetMapEmbedSrc } from '../data/company'
+import { company, phoneToTelHref, phoneToWhatsAppHref, googleMapsSearchHref } from '../data/company'
+import { MapGraphic } from './MapGraphic'
 
 export function ContactSection() {
   const { t, lang } = useLanguage()
   const ref = useReveal<HTMLDivElement>()
   const mapsHref = googleMapsSearchHref('Coleah Domino, Matam, Conakry, Guinée')
-  const mapEmbedSrc = openStreetMapEmbedSrc(company.mapCenter.lat, company.mapCenter.lon)
 
   return (
     <section id="contact" className="relative bg-ink-950 py-20 sm:py-28">
@@ -80,15 +80,16 @@ export function ContactSection() {
             </a>
           </div>
 
-          <div className="reveal relative min-h-[22rem] overflow-hidden border border-white/10 lg:min-h-full" style={{ transitionDelay: '120ms' }}>
-            <iframe
-              title="MAGIC SECURITY INTER — Coleah Domino, Matam, Conakry"
-              src={mapEmbedSrc}
-              className="h-full min-h-[22rem] w-full grayscale invert-[0.92] contrast-[1.05] lg:min-h-full"
-              loading="lazy"
-              referrerPolicy="no-referrer-when-downgrade"
+          <div
+            className="reveal group relative min-h-[22rem] overflow-hidden border border-white/10 lg:min-h-full"
+            style={{ transitionDelay: '120ms' }}
+          >
+            <MapGraphic
+              className="h-full min-h-[22rem] w-full transition-transform duration-700 group-hover:scale-[1.03] lg:min-h-full"
+              cityLabel={lang === 'fr' ? 'Conakry, Guinée' : 'Conakry, Guinea'}
+              districtLabel="Coleah Domino · Matam"
             />
-            <div className="pointer-events-none absolute inset-x-0 bottom-0 bg-gradient-to-t from-ink-950/95 via-ink-950/70 to-transparent p-4 pt-10">
+            <div className="pointer-events-none absolute inset-x-0 bottom-0 bg-gradient-to-t from-ink-950/95 via-ink-950/50 to-transparent p-4 pt-10">
               <p className="text-xs font-medium uppercase tracking-wider text-white/70">{t.contact.mapNote}</p>
               <a
                 href={mapsHref}

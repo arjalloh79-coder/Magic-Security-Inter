@@ -3,6 +3,8 @@ import { Send } from 'lucide-react'
 import { useLanguage } from '../i18n/LanguageContext'
 import { useReveal } from '../hooks/useReveal'
 import { company, agency } from '../data/company'
+import { imageSrc, imageSrcSet } from '../lib/assets'
+import { PhotoSlot } from './PhotoSlot'
 import { Toast } from './Toast'
 
 interface FormState {
@@ -105,6 +107,21 @@ export function QuoteForm() {
 
   return (
     <section id="devis" className="relative overflow-hidden bg-ink-900 py-20 sm:py-28">
+      <div className="absolute inset-0">
+        <PhotoSlot
+          src={imageSrc('agents-mission.jpg')}
+          srcSet={imageSrcSet('agents-mission.jpg', 720, [{ suffix: '-480w', width: 480 }])}
+          sizes="100vw"
+          width={720}
+          height={960}
+          alt=""
+          label="MAGIC SECURITY INTER"
+          className="relative h-full w-full"
+          imgClassName="h-full w-full opacity-25"
+        />
+        <div className="absolute inset-0 bg-gradient-to-b from-ink-900 via-ink-900/85 to-ink-900" />
+        <div className="absolute inset-0 bg-ink-900/40" />
+      </div>
       <div className="grid-overlay pointer-events-none absolute inset-0 opacity-[0.05]" />
       <div ref={ref} className="relative mx-auto max-w-4xl px-5 sm:px-8">
         <div className="reveal mx-auto max-w-2xl text-center">
